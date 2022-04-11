@@ -1,0 +1,4 @@
+#配置静态资源
+spring:
+  mvc:
+    static-path-pattern:
