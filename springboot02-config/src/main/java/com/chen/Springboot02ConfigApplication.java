@@ -8,6 +8,7 @@ public class Springboot02ConfigApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Springboot02ConfigApplication.class, args);
+		System.out.println("springBoot项目启动");
 	}
 
 }
