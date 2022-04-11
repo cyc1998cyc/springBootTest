@@ -1,4 +1,9 @@
 #配置静态资源
+#spring:
+#  mvc:
+#    static-path-pattern:
+#关闭默认图标
 spring:
   mvc:
-    static-path-pattern:
+    favicon:
+      enabled: false

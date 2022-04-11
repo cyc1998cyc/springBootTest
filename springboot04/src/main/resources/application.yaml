@@ -1,0 +1,8 @@
+server:
+  port: 9900
+
+
+#配置日期格式化
+#spring:
+#  mvc:
+#    date-format: 99/99/99
