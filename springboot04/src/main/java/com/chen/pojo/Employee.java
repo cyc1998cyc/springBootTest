@@ -20,6 +20,6 @@ public class Employee {
     private String email;
     private Integer gender;
 
-    private department departMent;
+    private Department departMent;
     private Date birth;
 }
