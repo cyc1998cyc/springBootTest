@@ -1,8 +1,14 @@
 server:
   port: 9900
+  servlet:
+# 配置网站总目录
+    context-path: /chen
+spring:
+  messages:
+#    配置文件防止的真实位置
+    basename: i18n.login
+
+user:
+  passpord: 123
 
 
-#配置日期格式化
-#spring:
-#  mvc:
-#    date-format: 99/99/99
