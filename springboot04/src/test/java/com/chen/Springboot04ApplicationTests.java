@@ -12,6 +12,7 @@ class Springboot04ApplicationTests {
 	@Test
 	void contextLoads() {
 		System.out.println(password);
+		System.out.println("陈宇超");
 	}
 
 }
