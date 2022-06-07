@@ -15,4 +15,10 @@ class Springboot04ApplicationTests {
 		System.out.println("陈宇超");
 	}
 
+	@Test
+	void testFastJson(){
+		System.out.println("test");
+
+	}
+
 }
