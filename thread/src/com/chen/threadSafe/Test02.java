@@ -8,8 +8,13 @@ import java.util.Random;
  * 17:53
  */
 public class Test02 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        MyTask myTask = new MyTask();
+        new Thread(myTask).start();
 
+        Thread.sleep(1000);
+
+        myTask.cancel();
     }
 
     static class MyTask implements Runnable{
@@ -40,6 +45,11 @@ public class Test02 {
             }
 
             return true;
+        }
+
+        public void cancel(){
+            toCancel = true;
+            System.out.println("收到 取消线程的消息");
         }
     }
 }
