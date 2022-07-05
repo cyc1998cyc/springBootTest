@@ -46,6 +46,14 @@ public class MyTest {
         LOGGER.fine("fine");
         LOGGER.finer("finer");
         LOGGER.finest("finest");
+
+        try {
+            int i = 1/0;
+        } catch (Exception e) {
+            LOGGER.throwing(MyTest.class.getName(), "logTest", e);
+        }
+
+
     }
 
     @Test
@@ -87,5 +95,23 @@ public class MyTest {
         LOGGER.fine("fine");
         LOGGER.finer("finer");
         LOGGER.finest("finest");
+    }
+
+    @Test
+    public void testStringFormatter(){
+        String lucy = String.format("%s今年%d岁了" , "lucy",12);
+        System.out.println(lucy);
+
+        System.out.printf("%s今年%d岁了" , "lucy",12);
+        System.out.println();
+
+        System.out.printf("%+d", 13);
+
+        
+    }
+
+    @Test
+    public void readConfig(){
+        LogManager logManager = LogManager.getLogManager();
     }
 }
