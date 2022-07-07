@@ -46,5 +46,7 @@ public class testLog4j {
         LOGGER.info("info");
         LOGGER.debug("debug");
 
+        System.out.println("jiansheng");
+
     }
 }
