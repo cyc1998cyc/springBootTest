@@ -64,6 +64,10 @@ public class TestLog4j {
         logger.info("testLog4j3");
 
     }
+    @Test
+    public void testLog4j4(){
+        logger.info("chenyuchao");
+    }
 
 
 }
