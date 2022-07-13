@@ -14,5 +14,16 @@ public class TestSlf4j {
     @Test
     public void testLog(){
         LOGGER.info("123");
+
+        String name = "wang";
+        int age = 18;
+        LOGGER.info("{}今年{}岁了",name,age);
+
+        try {
+            int i = 1/0;
+        } catch (Exception e) {
+            //e.printStackTrace();
+            LOGGER.error("出现异常", e);
+        }
     }
 }
