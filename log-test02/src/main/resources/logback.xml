@@ -3,7 +3,7 @@
 
     <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度
     %msg：日志消息，%n是换行符-->
-    <property name="pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %c [%thread]%-5level %msg%n"/>
+    <property name="pattern" value="%cyan(%d{yyyy-MM-dd HH:mm:ss.SSS}) ${spring.application.name} %green([%-12.12thread]) %highlight(%-5level) %boldMagenta(%-40.40logger{20}) :  %msg%n"/>
     <property name="log_dir" value="d:/logs"></property>
 
     <!--
