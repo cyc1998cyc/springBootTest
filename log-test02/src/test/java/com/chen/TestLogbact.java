@@ -9,12 +9,27 @@ public class TestLogbact {
 
     @Test
     public void testLogback1() {
+
+        /*while (true){
+
+        }*/
+
+
+        LOGGER.error("++++++++++++++++++++++++++++++++++++++++++");
+        LOGGER.warn("++++++++++++++++++++++++++++++++++++++++++");
+        LOGGER.info("++++++++++++++++++++++++++++++++++++++++++");
+        LOGGER.debug("++++++++++++++++++++++++++++++++++++++++++");
+        LOGGER.trace("++++++++++++++++++++++++++++++++++++++++++");
         //打印日志信息
-        LOGGER.error("error");
-        LOGGER.warn("warn");
-        LOGGER.info("info");
-        LOGGER.debug("debug");
-        LOGGER.trace("trace");
+
+        System.out.println("123123");
+        System.out.println("123123");
+        System.out.println("123123");
+        System.out.println("123123");
+        System.out.println("123123");
+        System.out.println("123123");
+        System.out.println("123123");
+
 
 
     }
