@@ -23,11 +23,15 @@ public class HelloServlet implements Servlet {
 
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
-        System.out.println("每次处理业务的时候会执行");
+        /*System.out.println("每次处理业务的时候会执行");
         PrintWriter writer = servletResponse.getWriter();
         writer.print("do you like what you see ?");
         writer.close();
-        System.out.println("业务执行结束");
+        System.out.println("业务执行结束");*/
+
+        System.out.println("我处理了一部分工作，接下来由其他功能处理");
+    //    进行转发
+        servletRequest.getRequestDispatcher("/hello3").forward(servletRequest, servletResponse);
     }
 
     @Override
