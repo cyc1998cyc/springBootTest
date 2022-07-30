@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chen.dao.UserDao">
+    <select id="select" resultType="com.chen.entity.User">
+        select * from user
+    </select>
+
+
+    <select id="selectById" resultType="com.chen.entity.User">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="selectByIdAndUsername" resultType="com.chen.entity.User">
+        select * from user where id = #{id} and username = #{username}
+    </select>
+
+    <select id="selectByUser" parameterType="com.chen.entity.User" resultType="com.chen.entity.User">
+        select * from user where id = #{id} and username = #{username}
+    </select>
+
+    <select id="selectByMap" resultType="com.chen.entity.User">
+        select * from user where password = #{password} and username = #{username}
+    </select>
+
+    <select id="selectByUsername" resultType="com.chen.entity.User">
+        select * from user where username like '%${username1}%'
+    </select>
+
+
+    <insert id="insert">
+        insert into user (id,username,password)values(#{id},#{username},#{password})
+    </insert>
+
+    <delete id="delete">
+        delete from user where id = #{id}
+    </delete>
+</mapper>
