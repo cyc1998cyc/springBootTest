@@ -11,6 +11,15 @@
         <property name="password" value="1812244d"/>
     </properties>
 
+    <!--<settings>
+        &lt;!&ndash;开启驼峰命名规则&ndash;&gt;
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>-->
+
+    <typeAliases>
+        <typeAlias type="com.chen.entity.User" alias="user"></typeAlias>
+    </typeAliases>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>

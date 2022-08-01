@@ -3,28 +3,36 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chen.dao.UserDao">
-    <select id="select" resultType="com.chen.entity.User">
-        select * from user
+
+    <resultMap id="userMap" type="com.chen.entity.User">
+        <id column="id" property="id"></id>
+        <result column="user_name" property="username"></result>
+        <result column="password" property="password"></result>
+    </resultMap>
+
+
+    <select id="select" resultMap="userMap">
+        select id,user_name,password from user
     </select>
 
 
-    <select id="selectById" resultType="com.chen.entity.User">
+    <select id="selectById" resultMap="userMap">
         select * from user where id = #{id}
     </select>
 
-    <select id="selectByIdAndUsername" resultType="com.chen.entity.User">
+    <select id="selectByIdAndUsername" resultMap="userMap">
         select * from user where id = #{id} and username = #{username}
     </select>
 
-    <select id="selectByUser" parameterType="com.chen.entity.User" resultType="com.chen.entity.User">
+    <select id="selectByUser" parameterType="com.chen.entity.User" resultMap="userMap">
         select * from user where id = #{id} and username = #{username}
     </select>
 
-    <select id="selectByMap" resultType="com.chen.entity.User">
+    <select id="selectByMap" resultMap="userMap">
         select * from user where password = #{password} and username = #{username}
     </select>
 
-    <select id="selectByUsername" resultType="com.chen.entity.User">
+    <select id="selectByUsername" resultMap="userMap">
         select * from user where username like '%${username1}%'
     </select>
 
@@ -36,4 +44,22 @@
     <delete id="delete">
         delete from user where id = #{id}
     </delete>
+
+
+    <select id="selectByAllConditions" resultMap="userMap">
+        select * from user
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="username != null and username != ''">
+                and user_name = #{username}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+        </where>
+
+        and 1=1
+    </select>
 </mapper>

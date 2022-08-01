@@ -101,11 +101,11 @@ public class TestMybatis {
                 User next = iterator.next();
                 log.info("user = [{}]",next);
             }
-            log.debug("受影响的行数={}", affectRows);
+            log.debug("受影响的行数=[{}]", affectRows);
             int i = 1/0;
             sqlSession.commit();
         } catch (Exception e) {
-            log.error("异常信息：{}", e);
+            log.error("异常信息", e);
         }
     }
 
@@ -124,7 +124,20 @@ public class TestMybatis {
             //int i = 1/0;
             sqlSession.commit();
         } catch (Exception e) {
-            log.error("异常信息：{}", e);
+            log.error("异常信息：[{}]", e);
+        }
+    }
+
+    @Test
+    public void testFindByAllConditons(){
+        User user = new User();
+        user.setId(null);
+        user.setPassword("2");
+        user.setUsername("chen");
+        List<User> userList = userDao.selectByAllConditions(user);
+        for (Iterator<User> iterator = userList.iterator(); iterator.hasNext(); ) {
+            User next = iterator.next();
+            log.info("user = [{}]",next);
         }
     }
 

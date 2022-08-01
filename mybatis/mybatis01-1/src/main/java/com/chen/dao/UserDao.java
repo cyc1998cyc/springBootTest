@@ -38,4 +38,6 @@ public interface UserDao {
     int insert(User user);
 
     int delete(User user);
+
+    List<User> selectByAllConditions(User user);
 }
