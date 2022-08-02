@@ -50,4 +50,14 @@ public class TestEmployee {
             log.info("dept is [{}]",next.getDept());
         }
     }
+
+    @Test
+    public void testSelect2(){
+        List<Employee> employees = employeeDao.select2();
+        for (Iterator<Employee> iterator = employees.iterator(); iterator.hasNext(); ) {
+            Employee next = iterator.next();
+            log.info("employee is [{}]",next);
+            log.info("dept is [{}]",next.getDept());
+        }
+    }
 }

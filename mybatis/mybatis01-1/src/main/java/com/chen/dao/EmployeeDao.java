@@ -1,6 +1,7 @@
 package com.chen.dao;
 
 import com.chen.entity.Employee;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,4 +13,8 @@ public interface EmployeeDao {
     List<Employee> selectAll();
 
     List<Employee> selectInfo();
+
+    List<Employee> select2();
+
+    List<Employee> selectByDid(@Param("dId") Integer dId);
 }

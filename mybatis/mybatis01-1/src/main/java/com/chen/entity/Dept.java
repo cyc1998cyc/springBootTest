@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 陈宇超
@@ -23,4 +24,6 @@ public class Dept implements Serializable {
      * 部门名称
      */
     private String name;
+
+    private List<Employee> employees;
 }

@@ -11,6 +11,21 @@
         <association property="dept" column="did" javaType="com.chen.entity.Dept" select="com.chen.dao.DeptDao.selectById"></association>
     </resultMap>
 
+    <resultMap id="employee3" type="com.chen.entity.Employee">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="did" property="dId"></result>
+    </resultMap>
+
+    <resultMap id="employee2" type="com.chen.entity.Employee">
+        <id column="eid" property="id"></id>
+        <result column="ename" property="name"></result>
+        <association property="dept" javaType="com.chen.entity.Dept">
+            <id column="did" property="id"></id>
+            <result column="dname" property="name"></result>
+        </association>
+    </resultMap>
+
     <sql id="sql">
         id,name,did
     </sql>
@@ -22,7 +37,7 @@
     </select>
 
 
-    <select id="selectInfo" resultType="com.chen.entity.Employee">
+    <select id="selectInfo" resultMap="employee2">
         select e.id,e.name,e.did,d.name dname
         from
         employee e
@@ -30,5 +45,21 @@
         dept d
         on
         e.did = d.id
+    </select>
+
+    <select id="select2" resultMap="employee2">
+        select e.id eid,e.name ename,d.id did,d.name dname
+        from
+        employee e
+        left join
+        dept d
+        on d.id = e.did
+    </select>
+
+    <select id="selectByDid">
+        select <include refid="employee3"></include>
+        from employee
+        where
+        did = #{dId}
     </select>
 </mapper>
