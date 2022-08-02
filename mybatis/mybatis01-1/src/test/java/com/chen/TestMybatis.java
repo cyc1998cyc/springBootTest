@@ -1,5 +1,7 @@
 package com.chen;
 
+import com.chen.dao.DeptDao;
+import com.chen.dao.EmployeeDao;
 import com.chen.dao.UserDao;
 import com.chen.entity.User;
 import lombok.extern.slf4j.Slf4j;
@@ -7,15 +9,11 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 陈宇超
@@ -25,12 +23,16 @@ import java.util.Map;
 public class TestMybatis {
     SqlSession sqlSession = null;
     UserDao userDao = null;
+    DeptDao deptDao = null;
+    EmployeeDao employeeDao = null;
 
     @Before
     public void before() throws IOException {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"));
-        sqlSession = sqlSessionFactory.openSession();
+        sqlSession = sqlSessionFactory.openSession(true);
         userDao = sqlSession.getMapper(UserDao.class);
+        deptDao = sqlSession.getMapper(DeptDao.class);
+        employeeDao = sqlSession.getMapper(EmployeeDao.class);
     }
 
     @Test
@@ -139,6 +141,59 @@ public class TestMybatis {
             User next = iterator.next();
             log.info("user = [{}]",next);
         }
+    }
+
+    @Test
+    public void testUpdate(){
+        User user = new User();
+        user.setId(1);
+        user.setUsername("chenyuchao2");
+        user.setPassword("1812244d");
+
+        try {
+            int i = userDao.update(user);
+            log.info("修改了[{}]行：", i);
+        } catch (Exception e) {
+            log.error("错误信息：", e);
+        }
+    }
+
+
+    @Test
+    public void testSelectByIds(){
+        List<Integer> idList = new ArrayList<>();
+        List<User> userList = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            idList.add(i);
+        }
+
+        userList = userDao.selectByIds(idList);
+        for (Iterator<User> iterator = userList.iterator(); iterator.hasNext(); ) {
+            User next = iterator.next();
+            log.info("user = [{}]",next);
+        }
+    }
+
+    @Test
+    public void testUpdateByIds(){
+        List<Integer> idList = new ArrayList<>();
+        List<User> userList = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            userList.add(new User(i,"chenyuchao","1812244dd"));
+        }
+        int i = userDao.updateByIds(userList);
+        log.info("修改了[{}]行：", i);
+
+    }
+
+    @Test
+    public void testInsertBinds(){
+        List<Integer> idList = new ArrayList<>();
+        List<User> userList = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            userList.add(new User(i+106,"chenyuchao","1812244dd"));
+        }
+        int i = userDao.insertBinds(userList);
     }
 
 

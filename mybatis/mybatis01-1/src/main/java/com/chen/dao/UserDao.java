@@ -40,4 +40,12 @@ public interface UserDao {
     int delete(User user);
 
     List<User> selectByAllConditions(User user);
+
+    int update(User user);
+
+    List<User> selectByIds(@Param("idList") List<Integer> idList);
+
+    int updateByIds(@Param("userList") List<User> userList);
+
+    int insertBinds(@Param("userList")List<User> userList);
 }

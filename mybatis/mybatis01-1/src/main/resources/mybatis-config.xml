@@ -33,7 +33,9 @@
     </environments>
 
     <mappers>
-        <mapper resource="mapper/userMapper.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/DeptMapper.xml"/>
+        <mapper resource="mapper/EmployeeMapper.xml"/>
     </mappers>
 
 

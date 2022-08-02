@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chen.dao.EmployeeDao">
+
+    <resultMap id="employee" type="com.chen.entity.Employee">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="did" property="dId"></result>
+        <association property="dept" column="did" javaType="com.chen.entity.Dept" select="com.chen.dao.DeptDao.selectById"></association>
+    </resultMap>
+
+    <sql id="sql">
+        id,name,did
+    </sql>
+
+
+    <select id="selectAll" resultMap="employee">
+        select <include refid="sql"></include>
+        from employee
+    </select>
+
+
+    <select id="selectInfo" resultType="com.chen.entity.Employee">
+        select e.id,e.name,e.did,d.name dname
+        from
+        employee e
+        left join
+        dept d
+        on
+        e.did = d.id
+    </select>
+</mapper>

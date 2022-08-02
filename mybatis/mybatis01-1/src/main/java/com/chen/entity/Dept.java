@@ -8,14 +8,19 @@ import java.io.Serializable;
 
 /**
  * 陈宇超
- * 18:29
+ * 14:47
  */
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class User implements Serializable {
+@AllArgsConstructor
+public class Dept implements Serializable {
+    /**
+     * 部门编号（主键）
+     */
     private Integer id;
-    private String username;
-    private String password;
 
+    /**
+     * 部门名称
+     */
+    private String name;
 }
