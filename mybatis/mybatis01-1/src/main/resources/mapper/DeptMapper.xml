@@ -10,12 +10,17 @@
         <collection property="employees" javaType="list" ofType="com.chen.entity.Employee"  column="id" select="com.chen.dao.EmployeeDao.selectByDid"></collection>
     </resultMap>
 
+    <resultMap id="deptMap2" type="com.chen.entity.Dept">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+    </resultMap>
+
     <sql id="sql">
-        id,name
+        `id`,`name`
     </sql>
 
 
-    <select id="selectAll" resultMap="deptMap">
+    <select id="selectAll" resultMap="deptMap2">
         select <include refid="sql"></include> from dept
     </select>
     <select id="selectById" resultMap="deptMap">

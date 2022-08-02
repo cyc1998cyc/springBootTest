@@ -27,7 +27,7 @@
     </resultMap>
 
     <sql id="sql">
-        id,name,did
+        `id`,`name`,`did`
     </sql>
 
 
@@ -57,7 +57,7 @@
     </select>
 
     <select id="selectByDid">
-        select <include refid="employee3"></include>
+        select <include refid="sql"></include>
         from employee
         where
         did = #{dId}
