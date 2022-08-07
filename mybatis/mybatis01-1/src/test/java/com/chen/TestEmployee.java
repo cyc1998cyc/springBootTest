@@ -1,6 +1,5 @@
 package com.chen;
 
-import com.chen.dao.DeptDao;
 import com.chen.dao.EmployeeDao;
 import com.chen.entity.Employee;
 import lombok.extern.slf4j.Slf4j;

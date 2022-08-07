@@ -11,10 +11,12 @@
         <property name="password" value="1812244d"/>
     </properties>
 
-    <!--<settings>
-        &lt;!&ndash;开启驼峰命名规则&ndash;&gt;
-        <setting name="mapUnderscoreToCamelCase" value="true"/>
-    </settings>-->
+    <settings>
+        <!--开启驼峰命名规则-->
+<!--        <setting name="mapUnderscoreToCamelCase" value="true"/>-->
+        <!-- 延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+    </settings>
 
     <typeAliases>
         <typeAlias type="com.chen.entity.User" alias="user"></typeAlias>
