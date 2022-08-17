@@ -9,4 +9,58 @@
 
     <context:annotation-config/>
 
+    <!--<bean id="userDao" name="dao,dao2" class="com.chen.UserDao">
+
+    </bean>-->
+
+<!--    <bean name="userDao" class="com.chen.UserDao"></bean>-->
+
+<!--    <bean name="userService" class="com.chen.UserService" factory-method="create"></bean>-->
+    <!--为bean起别名-->
+<!--    <alias name="userDao" alias="userDao2"></alias>-->
+
+<!--    <bean name="userDao" factory-bean="userService" factory-method="create2"></bean>-->
+
+    <bean class="com.chen.UserDao" name="userDao">
+
+    </bean>
+
+    <bean class="com.chen.AddressDao" name="addressDao"></bean>
+
+    <!--<bean name="userService" class="com.chen.UserService">
+        <constructor-arg ref="userDao"></constructor-arg>
+        <constructor-arg ref="addressDao"></constructor-arg>
+    </bean>-->
+
+<!--    通过setter 方法注入-->
+    <bean class="com.chen.UserService" name="userService">
+        <property name="userDao" ref="userDao"></property>
+        <property name="addressDao" ref="addressDao"></property>
+    </bean>
+
+    <bean name="address" class="com.chen.Address"></bean>
+
+    <bean class="com.chen.User" name="user">
+        <property name="name" value="chenyuchao"></property>
+        <property name="age" value="12"></property>
+        <property name="address" ref="address"></property>
+        <property name="friends">
+            <list>
+                <value>张三</value>
+                <value>李四</value>
+            </list>
+        </property>
+        <property name="hobby">
+            <array>
+                <value>football</value>
+                <value>basketball</value>
+            </array>
+        </property>
+        <property name="parents">
+            <map>
+                <entry key="mother" value="mama"></entry>
+                <entry key="father" value="baba"></entry>
+            </map>
+        </property>
+    </bean>
 </beans>
