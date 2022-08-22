@@ -31,9 +31,25 @@ public class TestIoc {
 
     @Test
     public void test03(){
-        ApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
         User user = context.getBean(User.class);
         LOGGER.info("user is [{}]",user.toString());
+        context.close();
 
+    }
+
+    @Test
+    public void test04(){
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
+        UserDao userDao = context.getBean(UserDao.class);
+        context.close();
+
+    }
+
+    @Test
+    public void test05(){
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("aware.xml");
+        C c = context.getBean(C.class);
+        c.printName();
     }
 }
