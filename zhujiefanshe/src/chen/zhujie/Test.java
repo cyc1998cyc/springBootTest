@@ -1,11 +1,21 @@
 package chen.zhujie;
 
+import java.util.HashMap;
+
 /**
  * 陈宇超
  * 15:25
  */
 public class Test {
     public static void main(String[] args) {
-        System.out.println("123");
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("name",new Person());
+        hashMap.put("sex","male");
+
+        System.out.println(hashMap.get("name"));
     }
+}
+
+class Person{
+
 }
