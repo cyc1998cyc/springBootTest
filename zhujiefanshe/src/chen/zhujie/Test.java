@@ -13,6 +13,7 @@ public class Test {
         hashMap.put("sex","male");
 
         System.out.println(hashMap.get("name"));
+        System.out.println("do you like what you see?");
     }
 }
 

@@ -1,9 +1,11 @@
 package com.chen;
 
+import com.chen.dao.OrderDao;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -51,5 +53,19 @@ public class TestIoc {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("aware.xml");
         C c = context.getBean(C.class);
         c.printName();
+    }
+
+    @Test
+    public void testScan(){
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("scan.xml");
+        OrderDao orderDao = (OrderDao)context.getBean(OrderDao.class);
+        System.out.println(orderDao);
+    }
+
+    @Test
+    public void testScan2(){
+        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext("com.chen");
+        OrderDao orderDao = (OrderDao)annotationConfigApplicationContext.getBean(OrderDao.class);
+        System.out.println(orderDao);
     }
 }

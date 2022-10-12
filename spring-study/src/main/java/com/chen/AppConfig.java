@@ -1,6 +1,7 @@
 package com.chen;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -8,11 +9,9 @@ import org.springframework.context.annotation.Configuration;
  * 9:23
  */
 @Configuration
+@ComponentScan("com.chen")
 public class AppConfig {
 
-    @Bean
-    public UserDao userDao(){
-        return new UserDao();
-    }
+
 
 }
