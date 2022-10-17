@@ -1,6 +1,9 @@
 package com.chen;
 
 import com.chen.dao.OrderDao;
+import com.chen.listener.EmailListener;
+import com.chen.listener.OrderEvent;
+import com.chen.spring.MyConfig;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,5 +70,18 @@ public class TestIoc {
         AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext("com.chen");
         OrderDao orderDao = (OrderDao)annotationConfigApplicationContext.getBean(OrderDao.class);
         System.out.println(orderDao);
+    }
+
+    @Test
+    public void testValue(){
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MyConfig.class );
+        MyConfig myConfig = ctx.getBean(MyConfig.class);
+        System.out.println(myConfig);
+    }
+
+    @Test
+    public void testListener(){
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(EmailListener.class);
+        ctx.publishEvent(new OrderEvent("123","chenyuchao","123"));
     }
 }
