@@ -37,6 +37,11 @@
         </property>
     </bean>
 
+    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.chen.mapper.UserMapper"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
+
 
     <!-- 注入事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -69,7 +74,7 @@
     <!-- ensure that the above transactional advice runs for any execution
         of an operation defined by the FooService interface -->
     <aop:config>
-        <aop:pointcut id="point" expression="within(com.ydlclass.service..*)"/>
+        <aop:pointcut id="point" expression="within(com.chen.service..*)"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="point"/>
     </aop:config>
 

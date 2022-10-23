@@ -1,6 +1,5 @@
 package com.chen.dao;
 
-import com.chen.entity.User;
 import org.springframework.stereotype.Repository;
 
 @Repository

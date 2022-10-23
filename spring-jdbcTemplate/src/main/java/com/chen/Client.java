@@ -1,7 +1,5 @@
 package com.chen;
 
-import com.chen.entity.User;
-import com.chen.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Client {

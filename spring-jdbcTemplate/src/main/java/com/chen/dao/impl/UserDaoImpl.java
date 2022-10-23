@@ -1,7 +1,6 @@
 package com.chen.dao.impl;
 
 import com.chen.dao.UserDao;
-import com.chen.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
