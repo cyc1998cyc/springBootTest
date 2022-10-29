@@ -20,6 +20,11 @@ class DemoApplicationTests {
         System.out.println(all);
     }
 
+    @Test
+    void test01(){
+        System.out.println("chenyuchao"); 
+    }
+
 
 
 }
