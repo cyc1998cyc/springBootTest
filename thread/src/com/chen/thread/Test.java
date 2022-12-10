@@ -6,12 +6,25 @@ package com.chen.thread;
  */
 public class Test {
     public static void main(String[] args) {
-        System.out.println("主线程打印的内容");
+        ThreadTest threadTest = new ThreadTest();
+        threadTest.start();
+        System.out.println(threadTest.getId());
+        threadTest.interrupt();
+        threadTest.isInterrupted();
 
 
-        MyThread myThread = new MyThread();
-        myThread.start();
-
-        System.out.println("main线程后面的代码");
     }
+}
+
+class ThreadTest extends Thread{
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(1000
+            );
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }
