@@ -1,23 +1,34 @@
 package com.chen.p2;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+
 /**
  * 陈宇超
  * 15:37
  */
 public class Test {
-    public static void main(String[] args) {
-        myThread2 myThread2 = new myThread2();
-        myThread2.start();
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
 
 
-        try {
-            for (int i = 0; i < 10; i++) {
-                System.out.println("main:" + i);
-                int time = (int)(Math.random() * 1000);
-                Thread.sleep(time);
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        FutureTask<String> futureTask = new FutureTask<>(new MyCallable());
+
+        Thread thread = new Thread(futureTask);
+        thread.start();
+
+        String s = futureTask.get();
+        System.out.println(s);
+
+
+    }
+}
+
+class MyCallable implements Callable<String>{
+
+    @Override
+    public String call() throws Exception {
+        System.out.println();
+        return Thread.currentThread().getName();
     }
 }
